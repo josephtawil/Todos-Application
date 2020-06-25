@@ -1,19 +1,4 @@
-const mysql = require("mysql");
-require("dotenv").config();
-
-const connection = mysql.createConnection({
-    host: process.env.host,
-    port: process.env.port,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.database
-});
-
-connection.connect((err) => {
-    if (err) throw err;
-    console.log("connected");
-});
-
+const connection = require("./connection");
 const seeAllTodos = () => {
     return new Promise((resolve, reject) => {
         connection.query("SELECT * FROM todos", (err, data) => {

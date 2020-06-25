@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { seeAllTodos, showTodo, deleteTodo, addTodo, editTodo } = require("../connection");
+const { seeAllTodos, showTodo, deleteTodo, addTodo, editTodo } = require("../config/orm");
 
 router.get("/api", (req, res) => {
     // res.send("hello");

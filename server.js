@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-
 // npm install colors 
 //npm install cowsay
 const colors = require("colors");
@@ -9,10 +8,13 @@ const cowsay = require("cowsay");
 const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("./client"));
 
 const apiRoutes = require("./routes/api-routes");
 app.use(apiRoutes);
 
+const clientRoute = require("./routes/client-routes");
+app.use(clientRoute);
 // app.use("/", (req, res) => {
 //   connection.query("SELECT * FROM todos", (err, data) => {
 //     res.send(data);
