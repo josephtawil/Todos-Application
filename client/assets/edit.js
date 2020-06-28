@@ -23,8 +23,8 @@ $(document).ready(function () {
             : $("#editTextInput").prop("placeholder");
 
         const completeStatus = $("#completedCheck").prop("checked")
-            ? 0
-            : 1;
+            ? 1
+            : 0;
 
         $.ajax(
             {
