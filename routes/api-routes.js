@@ -10,7 +10,7 @@ router.get("/api", (req, res) => {
         .catch((err) => res.send(err));
 });
 router.get("/api/get/:id", (req, res) => {
-    const id = parseInt = req.params.id;
+    const id = parseInt(req.params.id);
     showTodo(id)
         .then((todo) => res.send(todo))
         .catch((err) => res.send(err));
@@ -19,7 +19,8 @@ router.delete("/delete/:id", (req, res) => {
     const id = parseInt(req.params.id);
 
     deleteTodo(id)
-        .then((del) => res.json(del));
+        .then((del) => res.json(del))
+        .catch((err) => res.json(err));
 
 });
 

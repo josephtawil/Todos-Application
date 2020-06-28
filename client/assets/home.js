@@ -1,13 +1,34 @@
 $(document).ready(function () {
-    $.ajax(
-        {
-            method: "GET",
+
+    getTodos().then((allTodos) => {
+        renderTodos(allTodos);
+    });
+
+    $("#buttonSubmit").on("click", function () {
+        const text = $("#input").val();
+        $("#input").val("");
+        $.ajax({
+            type: "POST",
             url: "/api",
-        }).then((allTodos) => {
-            console.log(allTodos);
-            renderTodos(allTodos);
+            data: { todo_text: text },
+        }).then((res) => {
+            console.log(res);
+            window.location.href = "/";
         });
+    });
 });
+const getTodos = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "GET",
+            url: "/api",
+        })
+            .then((res) => {
+                resolve(res);
+            })
+            .catch((err) => reject(err));
+    });
+};
 
 const renderTodos = (arr) => {
     $("#card-container").html("");
@@ -31,7 +52,7 @@ const renderTodos = (arr) => {
                 </div>
             </div>
             `
-        )
+        );
     });
 };
 
