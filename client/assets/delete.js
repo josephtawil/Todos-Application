@@ -8,7 +8,7 @@ $(document).ready(function () {
         url: `/api/get/${id}`,
     }).then((todo) => {
         console.log(todo);
-        $("#deleteTodoText").text(todo[0].text);
+        $("#deleteTodoText").text(todo[0].todo_text);
     });
 
 
