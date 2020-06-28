@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+//grabbing specific methods from the orm
 const { seeAllTodos, showTodo, deleteTodo, addTodo, editTodo } = require("../config/orm");
 
 router.get("/api", (req, res) => {
